@@ -1,0 +1,38 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <h4>View Items</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <select class="form-control form-control-sm" [ngModel]="selectedItemType" (ngModelChange)="selectItemType($event)">
+                <option *ngFor="let type of itemTypes" [ngValue]="type">
+                    {{type.name}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="row">
+        <div *ngFor="let item of items" class="col-sm-6 col-lg-3">
+
+            <div class="card text-black bg-default">
+                <div class="card-body pb-0">
+                    <div class="btn-group float-right" dropdown>
+                        <img [src]="item.imageUrl" style="max-height: 150px; max-width: 150px; height: 150px; width: 150px;" />
+                    </div>
+                    <div class="text-value">{{item.name}}</div>
+                    <div>{{getItemTypeName(item.itemTypeId)}}</div>
+                    <div>{{item.cost | currency:'GBP':'&pound;':'1.2-2'}}</div>
+                    <div><i>{{item.description}}</i></div>
+                </div>
+                <div class="chart-wrapper mt-3 mx-3" style="height:5px;">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
